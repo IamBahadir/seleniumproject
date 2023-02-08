@@ -27,7 +27,7 @@ public class TC_2_ZeroBank_Verification {
             System.out.println("Test verification is FAILED! The actual header Text : "+actualHeaderText);
         }
 
-        driver.quit();
+
 
 
     }

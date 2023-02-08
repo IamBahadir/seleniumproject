@@ -1,0 +1,62 @@
+package com.cydeo.tests.day5_testNG_intro_dropdowns;
+
+import com.cydeo.utilities.WebDriverFactory;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+public class T3_RadioButton_cont {
+    public static void main(String[] args) throws InterruptedException {
+
+        WebDriver driver = WebDriverFactory.getDriver("chrome");
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        driver.get("https://practice.cydeo.com/radio_buttons");
+
+        Thread.sleep(1500);
+/*
+        List<WebElement> sportRadioButtons = driver.findElements(By.name("sport"));
+
+        for (WebElement each : sportRadioButtons) {
+            String eachId = each.getAttribute("id");
+            System.out.println(eachId);
+
+            if (eachId.equals("hockey")) {
+                each.click();
+            }
+
+        }
+
+
+        */
+
+
+        clickAndVerifyRadioButton(driver,"color","red");
+        clickAndVerifyRadioButton(driver,"sport","football");
+
+    } // the end of the main
+
+
+    private static void clickAndVerifyRadioButton(WebDriver driver, String nameAttribute, String idValue) {
+
+        List<WebElement> radioButtons = driver.findElements(By.name(nameAttribute));
+
+        for (WebElement each : radioButtons) {
+            String eachId = each.getAttribute("id");
+
+            if (eachId.equals(idValue)) {
+                each.click();
+                System.out.println(eachId + " isSelected() = " + each.isSelected());
+                break;
+            }
+        }
+
+
+    }
+
+
+} // the end of the class
